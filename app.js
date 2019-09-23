@@ -12,6 +12,11 @@ app.use(cors());
 //   next();
 // });
 
+
+app.head("/", cors(), (req, res) => {
+    console.info("HEAD /simple-cors");
+    res.sendStatus(204);
+  });
 app.get('/', cors(), (req, res) => {
   request(
     { url: 'https://quotesondesign.com/wp-json/wp/v2/posts?filter[orderby]=rand' },
