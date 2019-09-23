@@ -1,5 +1,9 @@
 const express = require('express');
 const request = require('request');
+var cors = require('cors')
+
+app.use(cors());
+app.options('*', cors());
 
 const app = express();
 
