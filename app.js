@@ -1,8 +1,11 @@
 const express = require('express');
 const request = require('request');
+var bodyParser = require('body-parser');
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -11,7 +14,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
     res.send("OK!")
     // request(
     //     { url: 'https://quotesondesign.com/wp-json/wp/v2/posts?filter[orderby]=rand' },
